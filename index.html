@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Bangaram 💌</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffd1dc, #ffc3a0);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: white;
+}
+
+/* GLASS CARD */
+.card {
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 25px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+/* TEXT */
+h1 {
+  font-size: 2em;
+}
+
+p {
+  line-height: 1.5;
+}
+
+/* BUTTON */
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 20px;
+  background: white;
+  color: #ff4d6d;
+  cursor: pointer;
+}
+
+/* HEARTS */
+.heart {
+  position: absolute;
+  color: rgba(255,255,255,0.4);
+  animation: float 8s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
+}
+
+/* TYPEWRITER */
+.type {
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3s steps(30), blink .6s infinite alternate;
+}
+
+@keyframes typing {
+  from {width: 0}
+  to {width: 100%}
+}
+
+@keyframes blink {
+  50% {border-color: transparent}
+}
+</style>
+</head>
+
+<body>
+
+<script>
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random()*12+10)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),8000);
+},800);
+</script>
+
+<!-- SCREEN 1 -->
+<div id="s1" class="card">
+  <h1>Good Morning Bangaram 💌</h1>
+  <p>I love you more than you know 🥹</p>
+  <button onclick="next(1)">Click me 😚</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div id="s2" class="card" style="display:none;">
+  <h1>For you </h1>
+  <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width="180">
+  <p>I just wanted to make your day a little softer 🫠</p>
+  <button onclick="next(2)">wait…</button>
+</div>
+
+<!-- SCREEN 3 -->
+<div id="s3" class="card" style="display:none;">
+  <h1>The Reasons I Love You 💌</h1>
+  <div id="reasons"></div>
+  <button onclick="next(3)">there’s more…</button>
+</div>
+
+<!-- SCREEN 4 -->
+<div id="s4" class="card" style="display:none;">
+  <p class="type">I hope this made your day a little better…</p>
+  <p>I promise to love you in your highs and lows.</p>
+  <p>Not just when you're okay… but when you're not.</p>
+  <p>Exactly the way you are 🥹</p>
+  <button onclick="next(4)">one last thing</button>
+</div>
+
+<!-- SCREEN 5 -->
+<div id="s5" class="card" style="display:none;">
+  <button onclick="playVideo()">Play this 🥺</button>
+  <div id="video"></div>
+
+  <p style="margin-top:15px;">Aap toh mere sabse acche dost ho…</p>
+  <p>aur mujhe nahi pata ki main aapki hoon ya nahi…</p>
+  <p>par main banna chahti hoon.</p>
+  <p><b>Sirf aapki. Hamesha. 🫠</b></p>
+</div>
+
+<script>
+function next(n){
+  document.getElementById("s"+n).style.display="none";
+  document.getElementById("s"+(n+1)).style.display="block";
+  if(n===2) showReasons();
+}
+
+const list=[
+"You make me want to love myself more 🥹",
+"You genuinely make me happy 😚",
+"You're not part of my world… you are my world 💌",
+"You feel like home 🫠",
+"You make everything softer",
+"You make me smile without trying",
+"You understand me",
+"You make me feel safe",
+"You make my days brighter",
+"You stay… and that means everything",
+"You make love feel easy",
+"You make me feel special",
+"You calm me down",
+"You make me laugh",
+"Because you're you… and I love that 💗"
+];
+
+function showReasons(){
+  let box=document.getElementById("reasons");
+  list.forEach((t,i)=>{
+    setTimeout(()=>{
+      let p=document.createElement("p");
+      p.innerText=(i+1)+". "+t;
+      box.appendChild(p);
+    }, i*400);
+  });
+}
+
+function playVideo(){
+  document.getElementById("video").innerHTML=
+  '<iframe width="280" height="160" src="https://www.youtube.com/embed/bIT5FUPQN70" frameborder="0" allowfullscreen></iframe>';
+}
+</script>
+
+</body>
+</html>
